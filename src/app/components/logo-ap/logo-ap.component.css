@@ -1,0 +1,18 @@
+.logos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    width: 300.43px;
+    height: 56px;
+}
+
+#logoAP {
+    width: 91.08px;
+    height: 56px;
+}
+
+#logoIN {
+    width: 185.35px;
+    height: 56px;
+}

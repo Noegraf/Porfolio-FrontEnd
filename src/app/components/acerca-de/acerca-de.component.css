@@ -1,0 +1,108 @@
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    /* margin-top: calc(-1 * var(--bs-gutter-y)); */
+    /* margin-right: calc(-.5 * var(--bs-gutter-x)); */
+    /* margin-left: calc(-.5 * var(--bs-gutter-x)); */
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.img-fluid {
+    max-width: 100%;
+    min-width: 100px;
+    height: fit-content;
+    margin-right: 24px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+
+
+.texto-acercade {
+
+    flex-direction: row;
+    align-items: flex-start;
+
+    gap: 24px;
+    align-self: stretch;
+}
+
+h5,
+h3 {
+    /* Experiencia */
+
+
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #00C9AE;
+
+}
+
+
+
+/*
+@media (min-width: 768px) {
+
+    .row {
+        padding: 110%;
+        
+        }
+        
+
+    img {
+       
+       
+        height: 100%;
+        left: 30%;
+        top: 170px;
+    }
+    .texto-acercade {
+
+        flex-direction:column ;
+        align-items: flex-start;
+    
+        gap: 24px;
+        align-self: stretch;
+    }
+
+
+}
+
+}*/
+
+@media (max-width: 320px) {
+
+    span {
+        text-align: center;
+    }
+
+    .row {
+        padding: 10%;
+        flex-wrap: wrap;
+    }
+
+    img {
+
+        height: auto;
+        height: 100%;
+        left: 33%;
+        top: 170px;
+    }
+
+    .texto-acercade {
+
+        flex-direction: row;
+        align-items: center;
+
+        gap: 24px;
+        align-self: stretch;
+    }
+
+}

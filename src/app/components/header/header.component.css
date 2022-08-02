@@ -1,0 +1,54 @@
+.row {
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    --bs-gutter-x:0px;
+        width: 100%;
+ 
+        padding-right: 0px;
+
+}
+
+
+
+
+
+.header {
+    display: flex;
+     justify-content: space-between;
+    /* gap: 24px; */
+    align-items: center;
+    /* width: 100%; */
+    /* min-width: min-content; */
+    background-color: #00C9AE;
+}
+
+
+
+
+
+
+
+#boton {
+    padding: 8px;
+    margin-right: 2rem;
+    border-radius: 4px;
+    gap: 24px;
+    border-style: hidden;
+    background: #000000;
+    font-size: 20px;
+    line-height: 24px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+
+
+/*
+@media (max-width: 320px) {
+    .row {
+        width: 100%;
+    }
+   
+   
+}*/

@@ -1,0 +1,54 @@
+.title {
+    /* Formacion */
+
+
+font-family: 'Montserrat';
+font-style: normal;
+font-weight: 800;
+font-size: 20px;
+line-height: 24px;
+
+color: #000000;
+
+}
+
+
+.bodya {
+    display: flex;
+    padding: 0;
+    margin: 0;
+  }
+  
+.progressa {
+    background: #343434;
+    justify-content: flex-start;
+    border-radius: 7px;
+    align-items: center;
+    position: relative;
+    padding: 0 5px;
+    display: flex;
+    height: 40px;
+    width: 500px;
+  }
+  
+  .progressa-value {
+    animation: load 3s normal forwards;
+    box-shadow: 0 10px 50px -7px #01ffdd;
+    border-radius: 4px;
+    background: #00C9AE;
+    height: 30px;
+    width: 0;
+  }
+
+ 
+ @keyframes load {
+    0% { width: 0; }
+    100% { width: 100%; }
+  }
+
+  #html .load { 
+   animation: 10%;
+   
+
+ }
+
