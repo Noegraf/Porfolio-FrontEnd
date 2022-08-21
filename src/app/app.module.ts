@@ -15,7 +15,9 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
 import { FooterComponent } from './components/footer/footer.component';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +33,15 @@ import {HttpClientModule} from '@angular/common/http';
     ProyectosComponent,
     ContactoComponent,
     HabilidadesComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
