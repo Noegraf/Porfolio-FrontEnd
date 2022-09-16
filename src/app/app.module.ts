@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { LogoAPComponent } from './components/logo-ap/logo-ap.component';
 import { RedesComponent } from './components/redes/redes.component';
 import { BannerComponent } from './components/banner/banner.component';
-import { OrdenComponent } from './components/orden/orden.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
 import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { FormacionComponent } from './components/formacion/formacion.component';
@@ -15,9 +14,22 @@ import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { HabilidadesComponent } from './components/habilidades/habilidades.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule} from '@angular/common/http';
-import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { FormsModule } from '@angular/forms';
+
+import { CookieService } from 'ngx-cookie-service';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { FormacionService } from './service/formacion.service';
+import { HeaderService } from './service/header.service';
+import { PersonaService } from './service/persona.service';
+import { AuthService } from './service/auth.service';
+
+import { InterceptorService } from './service/Interceptor.service';
+import { HomeComponent } from './components/Home/home/home.component';
+import { ModalComponent } from './components/formacion/modal-component/modal-component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +38,6 @@ import { LoginComponent } from './components/login/login.component';
     LogoAPComponent,
     RedesComponent,
     BannerComponent,
-    OrdenComponent,
     AcercaDeComponent,
     ExperienciaComponent,
     FormacionComponent,
@@ -34,16 +45,31 @@ import { LoginComponent } from './components/login/login.component';
     ContactoComponent,
     HabilidadesComponent,
     FooterComponent,
-    HomeComponent,
-    LoginComponent
+    LoginComponent,
+   HomeComponent,
+     ModalComponent
+    
+    
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    
+   
 
   ],
-  providers: [],
+  providers: [CookieService,
+  FormacionService,
+HeaderService,
+PersonaService,
+AuthService,
+{ provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,5 @@
+
+
 .title {
     /* Formacion */
 
@@ -12,11 +14,43 @@ color: #000000;
 
 }
 
-.img-fluid {
+.img, img {
+    
+  max-width: 170px;
+  max-height:min-content;
+  vertical-align: middle;
+}
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
     padding: 8px;
     
-    margin-left: -8px;
-    
-  
-    min-height: 6px;
 }
+
+a { 
+    margin: 8px;
+}
+
+.card{
+   background-color: #F8F8F8;
+    height: 200px;
+}
+
+.mb-3 {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    min-width:fit-content;
+    min-height: fit-content;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    }

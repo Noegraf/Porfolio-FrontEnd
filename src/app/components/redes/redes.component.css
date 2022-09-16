@@ -1,15 +1,10 @@
 .redes {
     display: flex;
-    flex-direction: row;
-    width: 300.43px;
-    margin: auto;
+    
     justify-content: space-between;
     align-items: center;
-    padding: 16px;
-    gap: 24px;
-
-
-
+    padding: 8px;
+width: 25vh;
 }
 
 img {

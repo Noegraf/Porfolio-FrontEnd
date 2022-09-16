@@ -11,3 +11,9 @@ line-height: 24px;
 color: #000000;
 
 }
+
+.container {
+    width: 100vh;
+    padding: 8px;
+
+}

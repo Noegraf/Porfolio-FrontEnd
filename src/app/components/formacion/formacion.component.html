@@ -1,10 +1,208 @@
-<h5 class="title">Formación</h5>
+<div class="row formacion text">
+  <h5 class="title">Formación</h5>
 
-<div class="row row-cols-1">
+  <div *ngIf="isloged()" class="text">
+    <button type="button" class="btn btn-succes" (click)="openFormModal('add')">
+      <a class="nav-link">Añadir Formacion <span class="sr-only">(current)</span></a>
+    </button>
+  </div>
+
+
+
+  <div class="row row-cols-1">
+    <div class="card mb-3" *ngFor="let formacion of formaciones">
+      <div class="col botones" *ngIf="isloged()">
+        <a (click)="openFormModal('edit', formacion)" class="btn btn-primary tooltips" data-bs-placement="top"
+          data-toggle="tooltip" data-bs-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+
+        <a (click)="openFormModal('delete', formacion)" class="btn btn-danger tooltips" data-bs-placement="top"
+          data-toggle="tooltip" data-bs-original-title="Delete">
+          <i class="bi bi-trash"></i></a>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="row g-0">
+            <div class="col-md-4 imagen-perfil">
+              <img src=" {{formacion.img}} " alt="imagen institucion">
+            </div>
+          </div>
+
+
+          <h5 class="card-title"> {{formacion.nombre}} </h5>
+          <p class="card-text"> {{formacion.institucion}} </p>
+          <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Añadir formacion-->
+
+<div class="modal fade" id="addFormacionModal" tabindex="-1" role="dialog" aria-labelledby="addFormacionModalLabel"
+  aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addFormacionModalLabel">Añadir Formacion</h5>
+        <!--   <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+
+
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddFormacion(addForm)">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre formacion"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="institucion">Nombre Institución</label>
+            <input type="text" ngModel name="institucion" class="form-control" id="institucion"
+              placeholder="Nombre institucion" required>
+          </div>
+          <div class="form-group">
+            <label for="fecha">Fecha</label>
+            <input type="number" ngModel name="fecha" class="form-control" id="institucion" placeholder="Fecha"
+              required>
+          </div>
+          <div class="form-group">
+            <label for="img">Imagen institucion</label>
+            <input type="text" ngModel name="img" class="form-control" id="img" placeholder="Agregar imgagen" required>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="add-formacion-form" class="btn btn-secondary"
+              data-bs-dismiss="modal">Cerrar</button>
+            <button [disabled]="addForm.invalid" type="submit" id="add-formacion-form" class="btn btn-primary">Guardar
+              cambios</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Modal editar formacion-->
+<div class="modal fade" id="editFormacionModal" tabindex="-1" role="dialog" aria-labelledby="editFormacionModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editFormacionModalLabel">Editar Formacion {{editFormacion?.nombre}} </h5>
+        <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="hidden" ngModel=" {{editFormacion?.id}} " name="id" class="form-control" id="id"
+              aria-hidden="true" />
+            <input type="text" ngModel=" {{editFormacion?.nombre}} " name="nombre" class="form-control" id="nombre"
+              aria-describedby="nameHelp" placeholder="Nombre formacion" />
+
+            <label for="institucion">Institucion</label>
+            <input type="text" ngModel=" {{editFormacion?.institucion}} " name="institucion" class="form-control"
+              id="institucion" aria-describedby="emailHelp" placeholder="Nombre institucion" />
+
+            <label for="fecha">Fecha</label>
+            <input type="number" ngModel=" {{editFormacion?.fecha}} " name="fecha" class="form-control" id="fecha"
+              placeholder="Fecha cursada" />
+
+          </div>
+
+          <div class="form-group">
+            <label for="img">Imagen Url</label>
+
+            <input type="text" ngModel=" {{editFormacion?.img}} " name="img" class="form-control" id="img"
+              placeholder="Imagen institucion" />
+
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="1" class="btn btn-secondary" data-bs-dismiss="modal">
+              Cerrar</button>
+            <button (click)="onUpdateFormacion(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary">Guardar
+              cambios</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Delete modal -->
+<div class="modal fade" id="deleteFormacionModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModelLabel">Eliminar Formacion</h5>
+        <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+      </div>
+
+      <div class="modal-body">
+        <p>
+          ¿Estas seguro de querer eliminar esta formacion?
+          {{deleteFormacion?.nombre}}?
+        </p>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+
+          <button (click)="onDeleteFormacion(deleteFormacion!.id)" class="btn btn-danger"
+            data-bs-dismiss="modal">Si</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Notification for no educations -->
+<div *ngIf="formaciones?.length == 0 && isloged()" class="col-lg-12 col-md-12 col-xl-12">
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">No hay educacion!</h4>
+    <p>No se encontró ninguna educacion</p>
+  </div>
+</div>
+<!-- Notification for no data -->
+<div *ngIf="formaciones?.length == 0 && !isloged()" class="col-lg-12 col-md-12 col-xl-12 spinner">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- CON INFORMACION A MANO
+
 <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="../../../assets/logo_fundacion3.png" class="img-fluid" alt="...">
+        <img src="../../../assets/logo_fundacion3.png" class="img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -20,13 +218,13 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/Isologotipo_ISPC_blanco-transparente-300x200.png" class="img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Desarrollo Web y Aplicaciones Digitales</h5>
+          <p class="card-text">Instituto Superior Politécnico de Córdoba</p>
+          <p class="card-text"><small class="text-muted">2022-actualidad</small></p>
         </div>
       </div>
     </div>
@@ -35,13 +233,14 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/BA2016.png" class="img" alt="logo codo a codo">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Diseño UX/UI</h5>
+          <p class="card-text">Agencia de Aprendizaje. Buenos Aires. Codo a Codo
+          </p>
+          <p class="card-text"><small class="text-muted">2022</small></p>
         </div>
       </div>
     </div>
@@ -49,13 +248,15 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/APLogo-20-20.png" class="img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Full Stack</h5>
+          <p class="card-text">Argentina Programa
+          </p>
+          <p class="card-text"><small class="text-muted">2021-actualidad
+          </small></p>
         </div>
       </div>
     </div>
@@ -63,13 +264,14 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/BA2016.png" class="img" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Full Stack
+          </h5>
+          <p class="card-text">Agencia de Aprendizaje. Buenos Aires. Codo a Codo</p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
         </div>
       </div>
     </div>
@@ -77,13 +279,14 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/khan academy.png" class="img" alt="logo khan academy">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Programación de computadoras Unidad: Introducción a HTML/CSS: hacer páginas web
+          </h5>
+          <p class="card-text">Khan Academy</p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
         </div>
       </div>
     </div>
@@ -91,15 +294,122 @@
   <div class="card mb-3">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid " alt="...">
+        <img src="../../../assets/logo_fundacion3.png" class="img" alt="logo Carlos Slim">
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <h5 class="card-title">Desarrollador Front-end
+          </h5>
+          <p class="card-text">Fundación Carlos Slim</p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
         </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/0.jpg" class="img" alt="logo utn mendoza">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Aprendiendo a Programar – Prácticas en JAVASCRIPT
+
+          </h5>
+          <p class="card-text">UTN Universidad Regional de Mendoza</p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/google activate.jpg" class="img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Fundamentos de Marketing Digital
+
+
+          </h5>
+          <p class="card-text">Google Activate
+          </p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/google activate.jpg" class="img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Curso de Introducción al Desarrollo Web: HTML
+
+
+          </h5>
+          <p class="card-text">Google Activate
+          </p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/google activate.jpg" class="img" alt="logo google activate">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Curso de Desarrollo de Apps Móviles
+
+
+          </h5>
+          <p class="card-text">Google Activate
+          </p>
+          <p class="card-text"><small class="text-muted">2021</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/sindcato de prensa.jpg" class="img" alt="logo sindicato de prensa rosario">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Postproducción en After Effects
+
+
+          </h5>
+          <p class="card-text">Sindicato de prensa Rosario</p>
+          <p class="card-text"><small class="text-muted">2014</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="../../../assets/OIP (1).jpg" class="img" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">Diseño integral, especializado en diseño grafico, publicitario, industrial y decoracion.
+
+
+          </h5>
+          <p class="card-text">CEPEC Instituto de diseño
+          </p>
+          <p class="card-text"><small class="text-muted">2009</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+ -->

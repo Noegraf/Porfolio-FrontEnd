@@ -1,9 +1,11 @@
 .logos {
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start;
-    width: 300.43px;
+    padding: 8px;
+   /* gap: 24px; */
+   
+
     height: 56px;
 }
 
