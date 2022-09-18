@@ -24,14 +24,16 @@
         <div class="card-body">
           <div class="row g-0">
             <div class="col-md-4 imagen-perfil">
-              <img src=" {{formacion.img}} " alt="imagen institucion">
+              <img id="img" src=" data:{{formacion.img}} " alt="imagen institucion">
             </div>
           </div>
 
+          <div class="text-area">
+            <h5 id="title" class="card-title"> {{formacion.nombre}} </h5>
+            <p class="card-text"> {{formacion.institucion}} </p>
+            <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
+          </div>
 
-          <h5 class="card-title"> {{formacion.nombre}} </h5>
-          <p class="card-text"> {{formacion.institucion}} </p>
-          <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
         </div>
       </div>
     </div>

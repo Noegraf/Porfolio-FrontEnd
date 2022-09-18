@@ -1,14 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 
 import { Persona } from 'src/app/model/persona';
 import { AuthService } from 'src/app/service/auth.service';
-
-import { PersonaService } from 'src/app/service/persona.service';
-import { environment } from 'src/environments/environment';
+import { HeaderService } from 'src/app/service/header.service';
 
 
 @Component({
@@ -19,15 +15,55 @@ import { environment } from 'src/environments/environment';
 
 export class AcercaDeComponent implements OnInit {  
 
-  constructor() { }
+  public persona: Persona | undefined;
+  public editPersona: Persona | undefined;
 
+  constructor(
+    private headerService: HeaderService,
+    private authService: AuthService
+  ) { }
+  isloged = () => this.authService.loggedIn();
 
-  ngOnInit(): void {
-   
+  ngOnInit() {
+    this.getPersona();
    
   }
 
-  
+  public getPersona(): void {
+    this.headerService.getPersona().subscribe({
+      next: (response: Persona) => {
+        this.persona = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('error');
+      },
+    });
+  }
+
+  public onOpenModal(mode: string, persona?: Persona): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-toggle', 'modal');
+
+    button.setAttribute('data-target', '#editPersonaModal');
+
+    container?.appendChild(button);
+    button.click();
+  }
+  public onUpdatePersona(persona: Persona): void {
+    this.editPersona = persona;
+    this.headerService.updatePersona(persona).subscribe({
+      next: (response: Persona) => {
+        console.log(response);
+        this.getPersona();
+      },
+      error: (error: HttpErrorResponse) => {
+        console.log('error');
+      },
+    });
+  }
 
 
 

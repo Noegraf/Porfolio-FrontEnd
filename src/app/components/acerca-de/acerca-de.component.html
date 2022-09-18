@@ -1,4 +1,154 @@
-<div class="row acercaDe main-container">
+<div class="row acercaDe" id="main-container">
+  <div *ngIf="persona" class="respon">
+    <div *ngIf="persona?.nombre === null" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">Cargando!</h4>
+        <p>Espere un momento por favor!.</p>
+      </div>
+    </div>
+
+    <div id="edicion" class="botones" *ngIf="isloged()">
+      <a (click)="onOpenModal('edit', persona)" class="btn btn-primary tooltips" data-bs-placement="top"
+        data-toggle="tooltip" data-bs-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+
+    </div>
+
+    <div id="foto-perfil" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+      <img src=" data:{{ persona?.urlImg }}" class="img-fluid" alt="foto de perfil" />
+    </div>
+    <div class="name">
+      <div id="persona">
+
+        <h5 class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+          {{ persona?.nombre }} {{ persona?.apellido }}
+        </h5>
+        <p>Full Stack Developer Jr.</p>
+      </div>
+    </div>
+
+    <div class="row about">
+      <div id="texto-acercade" class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+        <span>
+          <h3>¡Hola!</h3><br>
+        </span>
+        <p> {{ persona?.sobreMi }} </p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--  Edit persona modal  -->
+<div
+  class="modal fade modales"
+  id="editPersonaModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editPersonaModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="editPersonaModalLabel">
+          {{ persona?.nombre }}
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.nombre }}"
+              name="namepersona"
+              class="form-control"
+              id="namepersona"
+              aria-describedby="namepersona"
+              placeholder="Nombre"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ persona?.id }}"
+            name="idpersona"
+            class="form-control"
+            id="idpersona"
+            placeholder=""
+          />
+
+          <div class="form-group">
+            <label for="surname">Apellido</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.apellido }}"
+              name="surnamepersona"
+              class="form-control"
+              id="surnamepersona"
+              placeholder="Apellido"
+            />
+          </div>
+         
+          <div class="form-group">
+            <label for="descriptionpersona">Descripción</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.sobreMi }}"
+              name="descriptionpersona"
+              class="form-control"
+              id="descriptionpersona"
+              placeholder="descripción"
+            />
+          </div>
+          <div class="form-group">
+            <label for="profilePic">URL de la imagen</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.urlImg }}"
+              name="profilePic"
+              class="form-control"
+              id="profilePic"
+              placeholder="URL de la imagen"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdatePersona(editForm.value)"
+              data-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Notification for no data -->
+<div
+  *ngIf="persona == null && !isloged()"
+  class="col-lg-12 col-md-12 col-xl-12 spinner"
+>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+
+
+
+
+<!--
+  FUNCIONABA
+  <div class="row acercaDe main-container">
   <div class="respon">
   <div id="foto-perfil" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
     <img src="../../../assets/foto perfil.png" alt="foto de perfil" >
@@ -19,3 +169,4 @@
   </div>
 
 </div>
+-->

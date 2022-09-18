@@ -8,12 +8,14 @@ import { Persona } from '../model/persona';
   providedIn: 'root'
 })
 export class HeaderService {
-  private apiServerUrl=environment.baseUrl;
+  //private apiServerUrl=environment.baseUrl;
+  private apiServerUrl = 'https://argprogrbackenduno.herokuapp.com';
+
 
   constructor(private http: HttpClient) { }
 
   public getPersona():Observable<Persona>{
-    return this.http.get<Persona>(`${this.apiServerUrl}/api/v1/personas/9`)
+    return this.http.get<Persona>(`${this.apiServerUrl}/api/v1/personas/2`)
   }
 
   public updatePersona(persona: Persona):Observable<Persona>{

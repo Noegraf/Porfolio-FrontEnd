@@ -9,7 +9,8 @@ import { Formacion } from '../model/formacion';
 })
 export class FormacionService {
   
-   private apiServerUrl=environment.baseUrl; 
+   //private apiServerUrl=environment.baseUrl; 
+   private apiServerUrl = 'https://argprogrbackenduno.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 

@@ -1,6 +1,6 @@
 
 
-.title {
+#title {
     /* Formacion */
 
 
@@ -14,37 +14,35 @@ color: #000000;
 
 }
 
-.img, img {
+.imagen-perfil {
     
   max-width: 170px;
   max-height:min-content;
   vertical-align: middle;
 }
-.col-md-4 {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    padding: 8px;
-    
-}
+
 
 a { 
     margin: 8px;
 }
 
-.card{
-   background-color: #F8F8F8;
-    height: 200px;
-}
-
-.mb-3 {
+.text-area{
     display: flex;
     justify-content: center;
     align-content: center;
-    min-width:fit-content;
-    min-height: fit-content;
+    flex-direction: column;
+
 }
+
+.card-body{
+    display: flex;
+   
+    align-content: center;
+    align-items: center;
+    height: 200px;
+}
+
+
 
 .sr-only {
     position: absolute;

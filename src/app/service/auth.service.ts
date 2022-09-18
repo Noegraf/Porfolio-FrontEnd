@@ -9,7 +9,9 @@ import { environment } from 'src/environments/environment';
 })
 
 export class AuthService {
-  private apiServerUrl=environment.baseUrl; 
+  //private apiServerUrl=environment.baseUrl; 
+  private apiServerUrl = 'https://argprogrbackenduno.herokuapp.com';
+  
   currentUserSubject: BehaviorSubject<any>;
   parcero: boolean | undefined;
   constructor(private http: HttpClient) {
