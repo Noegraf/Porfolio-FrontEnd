@@ -30,6 +30,7 @@ export class FormacionComponent implements OnInit {
   ngOnInit(): void {
    // this.formModal = new window.bootstrap.Modal(
       this.getFormacion();
+      
   }
  
   public getFormacion(): void{
@@ -100,9 +101,9 @@ public onAddFormacion(addForm: NgForm): void {
 }
 
 public onUpdateFormacion(formacion: Formacion): void{
- //this.editFormacion=formacion;
-  document.getElementById('edit-formacion-form')?.click();
-  this.formacionService.editFormacion(formacion).subscribe({
+ this.editFormacion=formacion;
+ document.getElementById('edit-formacion-form')?.click();
+  this.formacionService.updateFormacion(formacion).subscribe({
     next: (response: Formacion) => {
       console.log(response);
       this.getFormacion();

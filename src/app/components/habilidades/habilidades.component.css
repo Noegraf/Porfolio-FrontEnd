@@ -1,3 +1,9 @@
+:root{
+  --bs-progress-bar-bg: #00C9AE;
+  --bs-progress-box-shadow:  0 10px 20px -7px rgba(1, 255, 255, 0.8);
+ 
+}
+
 .title {
     /* Formacion */
 font-family: 'Montserrat';
@@ -6,52 +12,101 @@ font-weight: 800;
 font-size: 20px;
 line-height: 24px;
 
-color: #000000;
+color: #343434;
 
 }
 
-.card{
- border: none;
- box-shadow: 0px 1px 3px rgba(51, 51, 51, 0.4);
 
-}
 
-.bodya {
-    display: flex;
-    padding: 0;
-    margin: 0;
-  }
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   
+  align-items: center;
+  gap: 8px;
+
+  border: none;
+  box-shadow: none;
+  padding: 8px;
+    margin: 8px;
+}
+
+.container{
+  display: flex;
+  width: 100vh;
+  overflow: auto;
+
+}
+
+
+.col.botones{
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+.div.col.botones {
+  width: 80px;
+}
+ 
+a {
+  margin: 8px;
+}
+
+#img {
+display: flex;
+justify-content: center;
+align-content: center;
+height: 50px;
+max-width: fit-content;
+
+}
+
+
 .progressa {
-    background: #343434;
+  animation: none;
     justify-content: flex-start;
     border-radius: 7px;
     align-items: center;
     position: relative;
-    padding: 0 5px;
     display: flex;
-    height: 40px;
-    width: 500px;
+    background-color:#343434;
+   min-width:  200px;
+    max-width: 100%;
   }
   
   .progressa-value {
     animation: load 3s normal forwards;
-    box-shadow: 0 10px 50px -7px #01ffdd;
-    border-radius: 4px;
-    background: #00C9AE;
-    height: 30px;
-    width: 0;
-
-  }
-
-  .inicio {
-    width: 0%;
-  }
-
  
+    border-radius: 4px;
+  
+    height: 35px;
+  }
+
+  .progress-bar {
+    
+    border-radius: 4px;
+
+  }
+  .progress {
+    
+    --bs-progress-bar-bg: #00C9AE;
+    --bs-progress-box-shadow:  0 10px 20px -7px rgba(1, 255, 255, 0.8);
+    background-color:transparent;
+  }
+  
+   
+
+
+
  @keyframes load  {
     0% { width: 0; }
-    100% { width:'{{experiencia.valor}}'; } 
+    100% { width: 100%; }  
   } 
 
   #html .load { 
@@ -60,3 +115,35 @@ color: #000000;
 
  }
 
+
+
+ .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  }
+
+  /* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: 0 10px 20px -7px rgba(1, 255, 255, 0.8);
+  border-radius: 8px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#343434;
+  border-radius: 4px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #343434;
+}

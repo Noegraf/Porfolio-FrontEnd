@@ -8,7 +8,6 @@ import { LogoAPComponent } from './components/logo-ap/logo-ap.component';
 import { RedesComponent } from './components/redes/redes.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { AcercaDeComponent } from './components/acerca-de/acerca-de.component';
-import { ExperienciaComponent } from './components/experiencia/experiencia.component';
 import { FormacionComponent } from './components/formacion/formacion.component';
 import { ProyectosComponent } from './components/proyectos/proyectos.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
@@ -28,7 +27,9 @@ import { AuthService } from './service/auth.service';
 
 import { InterceptorService } from './service/Interceptor.service';
 import { HomeComponent } from './components/Home/home/home.component';
-import { ModalComponent } from './components/formacion/modal-component/modal-component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 
 
 @NgModule({
@@ -39,15 +40,13 @@ import { ModalComponent } from './components/formacion/modal-component/modal-com
     RedesComponent,
     BannerComponent,
     AcercaDeComponent,
-    ExperienciaComponent,
     FormacionComponent,
     ProyectosComponent,
     ContactoComponent,
     HabilidadesComponent,
     FooterComponent,
     LoginComponent,
-   HomeComponent,
-     ModalComponent
+   HomeComponent
     
     
    
@@ -59,6 +58,9 @@ import { ModalComponent } from './components/formacion/modal-component/modal-com
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    NgbModule
+    
+    
     
    
 

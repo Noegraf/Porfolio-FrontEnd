@@ -15,10 +15,10 @@ export class HeaderService {
   constructor(private http: HttpClient) { }
 
   public getPersona():Observable<Persona>{
-    return this.http.get<Persona>(`${this.apiServerUrl}/api/v1/personas/2`)
+    return this.http.get<Persona>(`${this.apiServerUrl}/api/v1/personas/1`)
   }
 
-  public updatePersona(persona: Persona):Observable<Persona>{
+  public editPersona(persona: Persona):Observable<Persona>{
    return this.http.put<Persona>(`${this.apiServerUrl}/personas/`,persona);
   }
 }

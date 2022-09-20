@@ -1,5 +1,7 @@
-<div class="row formacion text">
+
   <h5 class="title">Formación</h5>
+
+  <div class="container">
 
   <div *ngIf="isloged()" class="text">
     <button type="button" class="btn btn-succes" (click)="openFormModal('add')">
@@ -9,24 +11,25 @@
 
 
 
-  <div class="row row-cols-1">
-    <div class="card mb-3" *ngFor="let formacion of formaciones">
+  <div class="row ">
+    <div class="col">
+    <div class="card-body" *ngFor="let formacion of formaciones">
       <div class="col botones" *ngIf="isloged()">
-        <a (click)="openFormModal('edit', formacion)" class="btn btn-primary tooltips" data-bs-placement="top"
-          data-toggle="tooltip" data-bs-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+        <a (click)="openFormModal('edit', formacion)" class="btn btn-primary tooltips" data-placement="top"
+          data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
 
-        <a (click)="openFormModal('delete', formacion)" class="btn btn-danger tooltips" data-bs-placement="top"
-          data-toggle="tooltip" data-bs-original-title="Delete">
+        <a (click)="openFormModal('delete', formacion)" class="btn btn-danger tooltips" data-placement="top"
+          data-toggle="tooltip" data-original-title="Delete">
           <i class="bi bi-trash"></i></a>
       </div>
 
-      <div class="col-md-8">
-        <div class="card-body">
-          <div class="row g-0">
-            <div class="col-md-4 imagen-perfil">
-              <img id="img" src=" data:{{formacion.img}} " alt="imagen institucion">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="imagen-perfil">
+              <img id="img" src="../../../assets/{{formacion.img}}" alt="imagen institucion" width="100">
             </div>
-          </div>
+          
 
           <div class="text-area">
             <h5 id="title" class="card-title"> {{formacion.nombre}} </h5>
@@ -39,6 +42,10 @@
     </div>
   </div>
 </div>
+  </div>
+  </div>
+  
+
 
 
 <!--Añadir formacion-->
@@ -80,7 +87,7 @@
 
           <div class="modal-footer">
             <button type="button" id="add-formacion-form" class="btn btn-secondary"
-              data-bs-dismiss="modal">Cerrar</button>
+              data-dismiss="modal">Cerrar</button>
             <button [disabled]="addForm.invalid" type="submit" id="add-formacion-form" class="btn btn-primary">Guardar
               cambios</button>
           </div>
@@ -131,11 +138,19 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="1" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
-            <button (click)="onUpdateFormacion(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary">Guardar
+            <button *ngIf="isloged()"
+            (click)="onUpdateFormacion(editForm.value)"
+            data-dismiss="modal"
+            class="btn btn-primary tooltips"
+            data-placement="top"
+            data-toggle="tooltip"
+            data-original-title="Edit">Guardar
               cambios</button>
           </div>
+
+
 
         </form>
       </div>
@@ -163,10 +178,10 @@
         </p>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 
           <button (click)="onDeleteFormacion(deleteFormacion!.id)" class="btn btn-danger"
-            data-bs-dismiss="modal">Si</button>
+            data-dismiss="modal">Si</button>
         </div>
       </div>
     </div>

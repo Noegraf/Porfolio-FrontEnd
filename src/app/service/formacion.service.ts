@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+
 import { Formacion } from '../model/formacion';
 
 @Injectable({
@@ -18,12 +18,12 @@ export class FormacionService {
     return this.http.get<Formacion[]>(`${this.apiServerUrl}/api/v1/formaciones/`)
   }
 
-  public editFormacion(formacion: Formacion):Observable<Formacion>{
-    return this.http.put<Formacion>(`${this.apiServerUrl}/api/v1/formaciones`,formacion);
+  public updateFormacion(formacion: Formacion):Observable<Formacion>{
+    return this.http.put<Formacion>(`${this.apiServerUrl}/api/v1/formaciones/`, formacion);
   }
 
   public addFormacion( formacion: Formacion):Observable<Formacion>{
-    return this.http.post<Formacion>(`${this.apiServerUrl}/api/v1/formaciones`,formacion);
+    return this.http.post<Formacion>(`${this.apiServerUrl}/api/v1/formaciones/`,formacion);
   }
   public deleteFormacion(Id: number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/api/v1/formaciones/${Id}`);

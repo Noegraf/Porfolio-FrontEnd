@@ -1,47 +1,50 @@
 <h5 class="title">Habilidades</h5>
 
 
-<div class="row row-cols-1 row-cols-md-3 g-4"  data-bs-masonry='{"percentPosition": true }'  >
-  
-<div *ngIf="isloged()" class="text">
-  <button type="button" class="btn btn-succes" (click)="openFormModal('add')">
-    <a class="nav-link">Añadir Experiencia <span class="sr-only">(current)</span></a>
-  </button>
-</div>
+<div class="container" data-masonry='{"percentPosition": true }'>
 
-  <div class="col d-flex flex-fill" *ngFor="let experiencia of experiencias">
-    <div class="col botones" *ngIf="isloged()">
-      <a (click)="openFormModal('edit', experiencia)" class="btn btn-primary tooltips" data-bs-placement="top"
-        data-toggle="tooltip" data-bs-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+  <div *ngIf="isloged()" class="text">
+    <button type="button" class="btn btn-succes" (click)="openFormModal('add')">
+      <a class="nav-link">Añadir Experiencia <span class="sr-only">(current)</span></a>
+    </button>
+  </div>
 
-      <a (click)="openFormModal('delete', experiencia)" class="btn btn-danger tooltips" data-bs-placement="top"
-        data-toggle="tooltip" data-bs-original-title="Delete">
-        <i class="bi bi-trash"></i></a>
-    </div>
-
-   
-    <div class="card h-100">
-      <img id="img" src="'experiencia.img'" alt="imagen lenguaje" class="card-img-top"> 
+ 
+  <div class="row" *ngFor="let experiencia of experiencias" >
+    <div class="col">
       <div class="card-body">
+        <div class="col botones" *ngIf="isloged()">
+          <a (click)="openFormModal('edit', experiencia)" class="btn btn-primary tooltips" data-placement="top"
+            data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+
+          <a (click)="openFormModal('delete', experiencia)" class="btn btn-danger tooltips" data-placement="top"
+            data-toggle="tooltip" data-original-title="Delete">
+            <i class="bi bi-trash"></i></a>
+
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            <div class="card">
+        <img id="img" src="{{experiencia.img}}" alt="imagen lenguaje" class="card-img-top">
+
         <h5 class="card-title"> {{experiencia.nombre}} </h5>
-        <div class="bodya">
+        <div class="col">
           <div class="progressa">
-            <div class="progressa-value progress-bar"
-             role="progressbar"
-             aria-label="Basic example"
-             style="width: 25%"
-             aria-valuenow="'experiencia.valor'%"
-             aria-valuemin="0"
-             aria-valuemax="100"
-             >
-            </div>
-            </div>
+              <ngb-progressbar class="progressa-value"  [value]="experiencia.valor" >
+              </ngb-progressbar>
           </div>
         </div>
       </div>
     </div>
   </div>
- 
+</div>
+</div>
+  </div>
+</div>
+
+
 
 
 <!--Añadir experiencia-->
@@ -63,13 +66,11 @@
         <form #addForm="ngForm" (ngSubmit)="onAddExperiencia(addForm)">
           <div class="form-group">
             <label for="institucion">Nombre</label>
-            <input type="text" ngModel name="nombre" class="form-control" id="nombre"
-              placeholder="Nombre" required>
+            <input type="text" ngModel name="nombre" class="form-control" id="nombre" placeholder="Nombre" required>
           </div>
           <div class="form-group">
             <label for="valor">Valor</label>
-            <input type="number" ngModel name="valor" class="form-control" id="valor" placeholder="Valor"
-              required>
+            <input type="number" ngModel name="valor" class="form-control" id="valor" placeholder="Valor" required>
           </div>
           <div class="form-group">
             <label for="img">Imagen</label>
@@ -78,12 +79,13 @@
 
           <div class="modal-footer">
             <button type="button" id="add-experiencia-form" class="btn btn-secondary"
-              data-bs-dismiss="modal">Cerrar</button>
-            <button (click)="onUpdateExperiencia(editForm.value)" [disabled]="addForm.invalid" type="submit" id="add-experiencia-form" class="btn btn-primary">Guardar
+              data-dismiss="modal">Cerrar</button>
+            <button (click)="onUpdateExperiencia(editForm.value)" [disabled]="addForm.invalid" type="submit"
+              id="add-experiencia-form" class="btn btn-primary">Guardar
               cambios</button>
           </div>
 
-          
+
         </form>
       </div>
     </div>
@@ -92,8 +94,8 @@
 
 
 <!--Modal editar experiencia-->
-<div class="modal fade" id="editExperienciaModal" tabindex="-1" role="dialog" aria-labelledby="editExperienciaModalLabel"
-  aria-hidden="true">
+<div class="modal fade" id="editExperienciaModal" tabindex="-1" role="dialog"
+  aria-labelledby="editExperienciaModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -112,7 +114,7 @@
             <input type="text" ngModel=" {{editExperiencia?.nombre}} " name="nombre" class="form-control" id="nombre"
               aria-describedby="nameHelp" placeholder="Nombre experiencia" />
 
-           <!-- <label for="descripcion">Descripcion</label>
+            <!-- <label for="descripcion">Descripcion</label>
             <input type="text" ngModel=" {{editExperiencia?.descripcion}} " name="descripcion" class="form-control"
               id="descripcion" aria-describedby="emailHelp" placeholder="Descripcion" /> -->
 
@@ -125,15 +127,16 @@
           <div class="form-group">
             <label for="img">Imagen Url</label>
 
-            <input type="text" ngModel=" {{editExperiencia?.img}} " name="img" class="form-control" id="img"
+            <input type="text" ngModel="{{editExperiencia?.img}} " name="img" class="form-control" id="img"
               placeholder="Imagen experiencia" />
 
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="1" class="btn btn-secondary" data-bs-dismiss="modal">
+            <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
-            <button (click)="onUpdateExperiencia(editForm.value)" data-bs-dismiss="modal" class="btn btn-primary">Guardar
+            <button (click)="onUpdateExperiencia(editForm.value)" data-dismiss="modal"
+              class="btn btn-primary">Guardar
               cambios</button>
           </div>
 
@@ -163,10 +166,10 @@
         </p>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
 
           <button (click)="onDeleteExperiencia(deleteExperiencia!.id)" class="btn btn-danger"
-            data-bs-dismiss="modal">Si</button>
+            data-dismiss="modal">Si</button>
         </div>
       </div>
     </div>
@@ -187,4 +190,3 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-

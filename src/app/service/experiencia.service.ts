@@ -18,11 +18,11 @@ export class ExperienciaService {
   }
 
   public editExperiencia(experiencia: Experiencia):Observable<Experiencia>{
-    return this.http.put<Experiencia>(`${this.apiServerUrl}/api/v1/experiencias`,experiencia);
+    return this.http.put<Experiencia>(`${this.apiServerUrl}/api/v1/experiencias/`,experiencia);
   }
 
   public addExperiencia( experiencia: Experiencia):Observable<Experiencia>{
-    return this.http.post<Experiencia>(`${this.apiServerUrl}/api/v1/experiencias`,experiencia);
+    return this.http.post<Experiencia>(`${this.apiServerUrl}/api/v1/experiencias/`,experiencia);
   }
   public deleteExperiencia(Id: number):Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/api/v1/experiencias/${Id}`);

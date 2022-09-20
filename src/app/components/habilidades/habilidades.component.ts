@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+
+
 import { Experiencia } from 'src/app/model/experiencia';
 import { AuthService } from 'src/app/service/auth.service';
 import { ExperienciaService } from 'src/app/service/experiencia.service';
@@ -11,12 +13,15 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
   templateUrl: './habilidades.component.html',
   styleUrls: ['./habilidades.component.css']
 })
+
+
 export class HabilidadesComponent implements OnInit {
   public experiencias:Experiencia[]=[];
   public editExperiencia:Experiencia | undefined;
   public addExperiencia:Experiencia | undefined;
   public deleteExperiencia:Experiencia | undefined;
 
+   
 
   
 
@@ -28,6 +33,7 @@ export class HabilidadesComponent implements OnInit {
   ngOnInit(): void {
    // this.formModal = new window.bootstrap.Modal(
       this.getExperiencia();
+      
   }
 
 
@@ -58,7 +64,7 @@ export class HabilidadesComponent implements OnInit {
     });
   }
 
-  
+ 
  
 
   public openFormModal(mode:String, experiencia?: Experiencia): void {
@@ -130,5 +136,8 @@ public onDeleteExperiencia(id: number): void {
 
 
 
+
 }
+
+
 

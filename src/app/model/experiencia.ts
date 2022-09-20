@@ -13,6 +13,7 @@ export class Experiencia {
         this.descripcion = descripcion;
         this.valor=valor;
         this.img=img;
+       
     }
 }
 

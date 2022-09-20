@@ -35,7 +35,7 @@ export class AcercaDeComponent implements OnInit {
         this.persona = response;
       },
       error: (error: HttpErrorResponse) => {
-        console.log('error');
+        console.log(error);
       },
     });
   }
@@ -46,121 +46,17 @@ export class AcercaDeComponent implements OnInit {
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
-
+    if (mode === 'edit') {
+      this.editPersona = persona;
     button.setAttribute('data-target', '#editPersonaModal');
 
     container?.appendChild(button);
     button.click();
   }
+}
   public onUpdatePersona(persona: Persona): void {
     this.editPersona = persona;
-    this.headerService.updatePersona(persona).subscribe({
-      next: (response: Persona) => {
-        console.log(response);
-        this.getPersona();
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log('error');
-      },
-    });
-  }
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /*
-  public persona:Persona;
-  public updatePersona:Persona | undefined;
- 
-
-
-  constructor(private personaService:PersonaService, private authService: AuthService) { }
-
-
-  isloged = () => this.authService.loggedIn();
-
-
-  ngOnInit(): void {
-    this.getPersona();
-  }
-
-  public getPersona(): void {
-    this.personaService.getPersona().subscribe({
-      next: (response: Persona) => {
-        this.persona = response;
-      },
-      error: (error: HttpErrorResponse) => {
-        console.log(error);
-      },
-    });
-  }
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  public onOpenModal(mode: string, persona?: Persona): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-toggle', 'modal');
-   if (mode === 'edit') {
-      this.updatePersona = persona;
-      button.setAttribute('data-target', '#editPersonaModal');
-    }
-
-    container?.appendChild(button);
-    button.click();
-  }
-
-
-
-  public onUpdatePersona(persona: Persona): void {
-    this.updatePersona = persona;
-    this.personaService.updatePersona(persona).subscribe({
+    this.headerService.editPersona(persona).subscribe({
       next: (response: Persona) => {
         console.log(response);
         this.getPersona();
@@ -170,5 +66,7 @@ export class AcercaDeComponent implements OnInit {
       },
     });
   }
+
+
+
 }
-*/

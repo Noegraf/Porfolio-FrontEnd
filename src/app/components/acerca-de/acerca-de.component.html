@@ -8,13 +8,13 @@
     </div>
 
     <div id="edicion" class="botones" *ngIf="isloged()">
-      <a (click)="onOpenModal('edit', persona)" class="btn btn-primary tooltips" data-bs-placement="top"
-        data-toggle="tooltip" data-bs-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+      <a (click)="onOpenModal('edit', persona)" class="btn btn-primary tooltips" data-placement="top"
+        data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
 
     </div>
 
     <div id="foto-perfil" class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-      <img src=" data:{{ persona?.urlImg }}" class="img-fluid" alt="foto de perfil" />
+      <img src="../../../assets/{{ persona?.urlImg }}" class="img-fluid" alt="foto de perfil"/>
     </div>
     <div class="name">
       <div id="persona">
