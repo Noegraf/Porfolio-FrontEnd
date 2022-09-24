@@ -1,3 +1,4 @@
+
 .acercaDe {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -8,6 +9,8 @@
     /* margin-left: calc(-.5 * var(--bs-gutter-x)); */
     flex-direction: row;
     align-items: stretch;
+        
+    
 }
 
 img {
@@ -16,6 +19,7 @@ img {
     height: fit-content;
   padding-right: 16px;
     justify-content: center;
+    margin-bottom: 24px;
     
 }
 
@@ -25,10 +29,10 @@ img {
     gap: 16px;
     align-items: flex-start
 }
-
+/*
 .botones {
     margin-bottom: 16px;
-}
+}*/
 
 #persona {
     flex-direction: row;
@@ -48,7 +52,7 @@ img {
 
 }
 
-h5, h3 {
+h3 {
   
     font-family: 'Montserrat';
     font-style: normal;

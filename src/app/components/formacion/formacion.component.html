@@ -11,7 +11,7 @@
 
 
 
-  <div class="row ">
+  <div class="row-card">
     <div class="col">
     <div class="card-body" *ngFor="let formacion of formaciones">
       <div class="col botones" *ngIf="isloged()">
@@ -23,16 +23,16 @@
           <i class="bi bi-trash"></i></a>
       </div>
 
-      <div class="row">
+      <div class="row-contenido">
         <div class="col">
           <div class="card">
             <div class="imagen-perfil">
-              <img id="img" src="../../../assets/{{formacion.img}}" alt="imagen institucion" width="100">
+              <img id="img" src="../../../assets/{{formacion.img}}" alt="imagen institucion">
             </div>
           
 
           <div class="text-area">
-            <h5 id="title" class="card-title"> {{formacion.nombre}} </h5>
+            <h5 class="card-title"> {{formacion.nombre}} </h5>
             <p class="card-text"> {{formacion.institucion}} </p>
             <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
           </div>
@@ -141,7 +141,7 @@
             <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
             <button *ngIf="isloged()"
-            (click)="onUpdateFormacion(editForm.value)"
+            (click)="onUpdateFormacion(editFormacion.id, editForm.value)"
             data-dismiss="modal"
             class="btn btn-primary tooltips"
             data-placement="top"

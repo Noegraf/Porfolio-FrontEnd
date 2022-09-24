@@ -17,15 +17,15 @@ export class ProyectoService {
     return this.http.get<Proyecto[]>(`${this.apiServerUrl}/api/v1/proyectos/`)
   }
 
-  public editProyecto(proyecto: Proyecto ):Observable<Proyecto>{
-    return this.http.put<Proyecto>(`${this.apiServerUrl}/api/v1/proyectos/`, proyecto);
+  public updateProyecto(id:number, proyecto: Proyecto ):Observable<void>{
+    return this.http.put<void>(`${this.apiServerUrl}/api/v1/proyectos/${id}`, proyecto);
   }
 
   public addProyecto( proyecto: Proyecto):Observable<Proyecto>{
     return this.http.post<Proyecto>(`${this.apiServerUrl}/api/v1/proyectos/`,proyecto);
   }
-  public deleteProyecto(Id: number):Observable<void>{
-    return this.http.delete<void>(`${this.apiServerUrl}/api/v1/proyectos/${Id}`);
+  public deleteProyecto(id: number):Observable<void>{
+    return this.http.delete<void>(`${this.apiServerUrl}/api/v1/proyectos/${id}`);
   }
 
 }

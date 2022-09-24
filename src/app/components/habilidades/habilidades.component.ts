@@ -11,7 +11,7 @@ import { ExperienciaService } from 'src/app/service/experiencia.service';
 @Component({
   selector: 'app-habilidades',
   templateUrl: './habilidades.component.html',
-  styleUrls: ['./habilidades.component.css']
+  styleUrls: ['./habilidades.component.css'] 
 })
 
 
@@ -91,7 +91,7 @@ export class HabilidadesComponent implements OnInit {
 
 
 public onAddExperiencia(addForm: NgForm): void {
-  document.getElementById('add-experiencia-form')?.click();
+ // document.getElementById('add-experiencia-form')?.click();
   this.experienciaService.addExperiencia(addForm.value).subscribe({
     next: (response: Experiencia) => {
       console.log(response);
@@ -105,11 +105,11 @@ public onAddExperiencia(addForm: NgForm): void {
   });
 }
 
-public onUpdateExperiencia(experiencia: Experiencia): void{
+public onUpdateExperiencia(id:number, experiencia: Experiencia): void{
  //this.editExperiencia=experiencia;
-  document.getElementById('edit-experiencia-form')?.click();
-  this.experienciaService.editExperiencia(experiencia).subscribe({
-    next: (response: Experiencia) => {
+  //document.getElementById('edit-experiencia-form')?.click();
+  this.experienciaService.editExperiencia(id, experiencia).subscribe({
+    next: (response: void) => {
       console.log(response);
       this.getExperiencia();
     },

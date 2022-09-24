@@ -86,7 +86,7 @@ export class FormacionComponent implements OnInit {
 
 
 public onAddFormacion(addForm: NgForm): void {
-  document.getElementById('add-formacion-form')?.click();
+  //document.getElementById('add-formacion-form')?.click();
   this.formacionService.addFormacion(addForm.value).subscribe({
     next: (response: Formacion) => {
       console.log(response);
@@ -100,13 +100,14 @@ public onAddFormacion(addForm: NgForm): void {
   });
 }
 
-public onUpdateFormacion(formacion: Formacion): void{
- this.editFormacion=formacion;
- document.getElementById('edit-formacion-form')?.click();
-  this.formacionService.updateFormacion(formacion).subscribe({
-    next: (response: Formacion) => {
+public onUpdateFormacion(id:number, formacion: Formacion): void{
+ //this.editFormacion=formacion;
+// document.getElementById('edit-formacion-form')?.click();
+  this.formacionService.updateFormacion(id, formacion).subscribe({
+    next: (response: void) => {
       console.log(response);
       this.getFormacion();
+      
     },
     error:(error:HttpErrorResponse)=>{
       alert(error.message);

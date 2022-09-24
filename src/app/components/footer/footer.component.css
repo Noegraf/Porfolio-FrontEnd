@@ -1,0 +1,33 @@
+#persona {
+    flex-direction: column;
+    display: flex; 
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 24px;
+}
+
+#foto-perfil {
+    max-width: 50%;
+    min-width: 40px;
+    height: fit-content;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.hr{
+    border: solid 3px;
+    color: #343434;   
+}
+
+.img-fluid{
+    max-width: 50px;
+}
+
+.title{
+    padding: 8px !important;
+}
+
+h5{
+    padding: 8px !important;
+}

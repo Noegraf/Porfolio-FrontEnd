@@ -4,11 +4,11 @@
     <app-logo-ap></app-logo-ap>
     <app-redes></app-redes>
     <div>
-      <button class="button active tooltips" (ngSubmit)="onEnviar($event)" *ngIf="!isLogged()" type="button"
+      <button class="btn active tooltips" (ngSubmit)="onEnviar($event)" *ngIf="!isLogged()" type="button"
         data-bs-toggle="modal" data-bs-target="#myModal" data-placement="top" data-toggle="tooltip"
         data-original-title="Edit">INGRESAR</button>
-      <div *ngIf="isLogged()" class="nav-item">
-        <a (click)="handleClear()" (click)="authService.logoutUser()" class="button btn active tooltips" ><i
+      <div *ngIf="isLogged()" class="button">
+        <a (click)="handleClear()" (click)="authService.logoutUser()" class="btn active tooltips" ><i
             ></i>SALIR</a>
       </div>
     </div>
@@ -25,8 +25,8 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="border-radius: 20px">
       <div class="modal-header">
-        <h5 class="modal-title">Login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <h5 class="modal-title">LOGIN</h5>
+        <p class="modal-subtitle">Bienvenido desarrollador!</p>
       </div>
       <div class="modal-body">
         <form [formGroup]="form" class="m-5" (ngSubmit)="onEnviar($event)">

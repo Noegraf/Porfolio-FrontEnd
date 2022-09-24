@@ -1,14 +1,41 @@
 <div class="container">
 <h5 class="title">Contacto</h5>
+<form action="" id="form">
 <div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Tu email:</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    <label for="subject" class="form-label">Asunto:</label>
+    <input type="text" class="form-control" id="subject" placeholder="Asunto" name="subject">
   </div>
   <div class="mb-3">
-    <label for="exampleFormControlTextarea1" class="form-label">Enviame un mensaje:</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="message" class="form-label">Mensaje:</label>
+    <textarea class="form-control" id="message" rows="3" name="message"></textarea>
   </div>
-  <div class="d-grid gap-2 col-6 mx-auto">
-    <button class="btn btn-primary" type="button">Enviar</button>
-  </div>
+
+    <button class="btn btn-primary" type="submit">Enviar</button>
+    <a id="mailA"></a>
+  </form>
+  
 </div>
+
+<script>
+  
+
+
+const form = document.getElementById('form')
+const sendMail = document.getElementById('emailA')
+
+function handleSendEmail(event) {
+    event.preventDefault()
+    const fd = new FormData(this)
+
+    sendMail.setAttribute(
+        'href',
+        `mailTo:nouvalle.graf@gmail.com?subject=${fd.get('subject')}&body=${fd.get('message')}`  
+    )
+
+    sendMail.click()
+}
+
+form.addEventListener('submit', handleSendEmail)
+
+
+</script>

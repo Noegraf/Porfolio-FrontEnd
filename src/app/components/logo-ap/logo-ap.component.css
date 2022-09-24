@@ -1,20 +1,15 @@
 .logos {
     display: flex;
-    justify-content: space-between;
+    
+    justify-content: space-around;
     align-items: center;
     padding: 8px;
-   /* gap: 24px; */
-   
-
-    height: 56px;
+width: 25vh;
 }
 
-#logoAP {
-    width: 91.08px;
-    height: 56px;
+img {
+    
+    height: 54px;
+    padding: 2%;
 }
 
-#logoIN {
-    width: 185.35px;
-    height: 56px;
-}

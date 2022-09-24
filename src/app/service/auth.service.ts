@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  //private apiServerUrl=environment.baseUrl; 
+
   private apiServerUrl = 'https://argprogrbackenduno.herokuapp.com';
   
   currentUserSubject: BehaviorSubject<any>;

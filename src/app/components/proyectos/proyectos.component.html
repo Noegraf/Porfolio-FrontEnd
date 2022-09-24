@@ -116,7 +116,7 @@
                 <br>
                  2022 
                 </p>
-              <a href={{proyecto.urlProyecto}} class="btn btn-primary active">
+              <a type="button" href={{proyecto.urlProyecto}} class="btn active">
                Ver proyecto
             </a>
             </div>
@@ -230,7 +230,7 @@
           <div class="modal-footer">
             <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
-            <button (click)="onUpdateProyecto(editForm.value)" data-dismiss="modal" class="btn btn-primary">Guardar
+            <button (click)="onUpdateProyecto(editProyecto.id, editForm.value)" data-dismiss="modal" class="btn btn-primary">Guardar
               cambios</button>
           </div>
 

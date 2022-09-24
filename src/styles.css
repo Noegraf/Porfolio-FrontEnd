@@ -1,1 +1,92 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --bs-primary: #00C9AE;
+    --bs-dark: #343434;
+    --bs-light: #FDF9F0;
+    
+    --bs-progress-bar-bg: #00C9AE;
+    --bs-progress-box-shadow: 0 10px 20px -7px rgba(1, 255, 255, 0.8);
+
+    gap: 24px;
+    grid-gap: 10px;
+
+
+}
+
+
+  .modal-backdrop.fade.show {
+    z-index: 20 !important;
+  }
+
+.title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+
+    color: #343434;
+    padding: 24px 0 24px 0;
+}
+
+h5 .card-title {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+
+    color: #343434;
+}
+
+
+.btn {
+    padding: 8px;
+    border-radius: 4px;
+   margin: 8px;
+    border-style: hidden;
+    background: #343434;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FDF9F0;
+    font-weight: bold;
+    font-family: 'Montserrat';
+}
+
+.btn:hover {
+    background-color: #00C9AE;
+    color: #343434;
+}
+
+
+
+.col.botones {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+a {
+    padding: 8px;
+}
+
+
+.div.col.botones {
+    width: 80px;
+}
+
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+  }
+
+

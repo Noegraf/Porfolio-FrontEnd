@@ -55,7 +55,7 @@ export class AcercaDeComponent implements OnInit {
   }
 }
   public onUpdatePersona(persona: Persona): void {
-    this.editPersona = persona;
+   // this.editPersona = persona;
     this.headerService.editPersona(persona).subscribe({
       next: (response: Persona) => {
         console.log(response);

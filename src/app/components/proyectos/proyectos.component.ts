@@ -84,7 +84,7 @@ export class ProyectosComponent implements OnInit {
 
 
 public onAddProyecto(addForm: NgForm): void {
-  document.getElementById('addForm')?.click();
+ // document.getElementById('addForm')?.click();
   this.proyectoService.addProyecto(addForm.value).subscribe({
     next: (response: Proyecto) => {
       console.log(response);
@@ -98,11 +98,11 @@ public onAddProyecto(addForm: NgForm): void {
   });
 }
 
-public onUpdateProyecto(proyecto: Proyecto): void{
+public onUpdateProyecto(id:number, proyecto: Proyecto): void{
  //this.editProyecto=proyecto;
-  document.getElementById('editForm')?.click();
-  this.proyectoService.editProyecto(proyecto).subscribe({
-    next: (response: Proyecto) => {
+ // document.getElementById('editForm')?.click();
+  this.proyectoService.updateProyecto(id, proyecto).subscribe({
+    next: (response: void) => {
       console.log(response);
       this.getProyecto();
     },

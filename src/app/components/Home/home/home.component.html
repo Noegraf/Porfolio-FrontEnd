@@ -1,9 +1,28 @@
-<app-header></app-header>
 
 
-<app-formacion></app-formacion>
-<app-habilidades></app-habilidades>
+    
+      <nav id="paginas" class="list-group">
+        <a class="btn list-group-item list-group-item-action" href="#list-item-1"><i class="bi bi-person-circle"></i></a>
+        <a class="btn list-group-item list-group-item-action" href="#list-item-2"><i class="bi bi-laptop"></i></a>
+        <a class="btn list-group-item list-group-item-action" href="#list-item-3"><i class="bi bi-sliders2"></i></a>
+        <a class="btn list-group-item list-group-item-action" href="#list-item-4"><i class="bi bi-collection"></i></a>
+      </nav>
+   
 
-<app-proyectos></app-proyectos>
-<app-contacto></app-contacto>
-<app-footer></app-footer>
+      <div data-bs-spy="scroll" data-bs-target="#paginas" data-bs-smooth-scroll="true" class="scrollspy" tabindex="0">
+        
+        <app-header id="list-item-1"></app-header>
+      
+        <app-formacion id="list-item-2"></app-formacion>
+        
+        <app-habilidades id="list-item-3"></app-habilidades>
+        
+        <app-proyectos id="list-item-4"></app-proyectos>
+        
+        <app-footer></app-footer>
+        
+      </div>
+   
+
+   
+

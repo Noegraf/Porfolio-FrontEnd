@@ -80,7 +80,7 @@
           <div class="modal-footer">
             <button type="button" id="add-experiencia-form" class="btn btn-secondary"
               data-dismiss="modal">Cerrar</button>
-            <button (click)="onUpdateExperiencia(editForm.value)" [disabled]="addForm.invalid" type="submit"
+            <button (click)="onAddExperiencia(editForm.value)" [disabled]="addForm.invalid" type="submit"
               id="add-experiencia-form" class="btn btn-primary">Guardar
               cambios</button>
           </div>
@@ -135,7 +135,7 @@
           <div class="modal-footer">
             <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
-            <button (click)="onUpdateExperiencia(editForm.value)" data-dismiss="modal"
+            <button (click)="onUpdateExperiencia(editExperiencia.id, editForm.value)" data-dismiss="modal"
               class="btn btn-primary">Guardar
               cambios</button>
           </div>

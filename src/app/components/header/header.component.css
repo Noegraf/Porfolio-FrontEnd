@@ -2,6 +2,12 @@
     display: flex;
     justify-content: space-around;
 }
+
+#myModal{
+    z-index: 2000 !important;
+}
+
+
 .row {
     --bs-gutter-y: 0;
     display: flex;
@@ -21,8 +27,7 @@ div.header {
 .header {
    
    
-     padding: 8px;
-     gap: 8px; 
+ 
     
 
     /* min-width: min-content; */
@@ -32,20 +37,17 @@ div.header {
 
 
 
-.button {
-    display: flex;
-  
-    padding: 8px 8px;
-  
+.btn {
+    padding: 16px;
     border-radius: 4px;
-   
+    gap: 24px;
     border-style: hidden;
-    background: #000000;
-   
-  
-    color: #FFFFFF;
+    background: #343434;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FDF9F0;
     font-weight: bold;
-    font-family: 'Montserrat';
+    font-family: 'Montserrat'; 
 }
 
 

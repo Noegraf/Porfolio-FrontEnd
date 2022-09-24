@@ -18,8 +18,8 @@ export class FormacionService {
     return this.http.get<Formacion[]>(`${this.apiServerUrl}/api/v1/formaciones/`)
   }
 
-  public updateFormacion(formacion: Formacion):Observable<Formacion>{
-    return this.http.put<Formacion>(`${this.apiServerUrl}/api/v1/formaciones/`, formacion);
+  public updateFormacion(Id: number, formacion: Formacion):Observable<void>{
+    return this.http.put<void>(`${this.apiServerUrl}/api/v1/formaciones/${Id}`, formacion);
   }
 
   public addFormacion( formacion: Formacion):Observable<Formacion>{

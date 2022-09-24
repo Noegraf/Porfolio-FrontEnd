@@ -1,5 +1,33 @@
+
+.imagen-perfil {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+   height: 80px;
+   width: 160px;
+   margin-right: 24px;
+
+}
+
+#img{
+   
+    max-width: 160px;
+   
+    height: fit-content;
+    max-height: -webkit-fill-available;
+}
+
+
+
+
+/*
+a {
+    margin: 8px;
+}
+
 .title {
-    /* Formacion */
 font-family: 'Montserrat';
 font-style: normal;
 font-weight: 800;
@@ -7,20 +35,7 @@ font-size: 20px;
 line-height: 24px;
 
 color: #343434;
-
 }
-
-.container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-padding: 8px;
-}
-
-
-
-
 
 .col.botones{
     margin-top: 8px;
@@ -37,20 +52,7 @@ padding: 8px;
   }
 
 
-
-.imagen-perfil {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    height: 50px;
-    max-width: fit-content;
-
-}
-
-
-a {
-    margin: 8px;
-}
+*/
 
 .text-area {
     display: flex;
@@ -62,17 +64,19 @@ a {
 
 
 
+
 .card {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 8px;
-
     height: 200px;
+    align-content: center;
+    justify-content: flex-start;
+    border: none;
+    box-shadow: none;
 }
-
 
 
 .sr-only {
@@ -82,4 +86,13 @@ a {
     padding: 0;
     margin: -1px;
     overflow: hidden;
+}
+
+.row{
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+
 }
