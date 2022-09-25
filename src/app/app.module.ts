@@ -28,6 +28,7 @@ import { AuthService } from './service/auth.service';
 import { InterceptorService } from './service/Interceptor.service';
 import { HomeComponent } from './components/Home/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 
@@ -47,6 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FooterComponent,
     LoginComponent,
    HomeComponent
+   
     
     
    
@@ -58,7 +60,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    DragDropModule
     
     
     

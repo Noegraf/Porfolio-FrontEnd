@@ -1,10 +1,7 @@
 .logos {
     display: flex;
-    
-    justify-content: space-around;
     align-items: center;
-    padding: 8px;
-width: 25vh;
+
 }
 
 img {

@@ -1,9 +1,8 @@
+<h5 class="title">Formación</h5>
 
-  <h5 class="title">Formación</h5>
+<div class="container">
 
-  <div class="container">
-
-  <div *ngIf="isloged()" class="text">
+  <div *ngIf="isloged()" class="text" >
     <button type="button" class="btn btn-succes" (click)="openFormModal('add')">
       <a class="nav-link">Añadir Formacion <span class="sr-only">(current)</span></a>
     </button>
@@ -12,39 +11,42 @@
 
 
   <div class="row-card">
-    <div class="col">
-    <div class="card-body" *ngFor="let formacion of formaciones">
-      <div class="col botones" *ngIf="isloged()">
-        <a (click)="openFormModal('edit', formacion)" class="btn btn-primary tooltips" data-placement="top"
-          data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
+    <div id="even" cdkDropList [cdkDropListData]="formaciones" cdkDropListConnectedTo="even"
+      (cdkDropListDropped)="onDrop($event)"  #formacionList="cdkDropList" class="col onDropAction">
+      <div class="card-body" *ngFor="let formacion of formaciones " cdkDrag [cdkDragData]="formacion" [cdkDragDisabled]="!isloged()"
+        cdkDragPreviewContainer="parent">
+        <div class="col botones" *ngIf="isloged()">
+          <a (click)="openFormModal('edit', formacion)" class="btn btn-primary tooltips" data-placement="top"
+            data-toggle="tooltip" data-original-title="Edit"><i class="bi bi-pencil-square"></i></a>
 
-        <a (click)="openFormModal('delete', formacion)" class="btn btn-danger tooltips" data-placement="top"
-          data-toggle="tooltip" data-original-title="Delete">
-          <i class="bi bi-trash"></i></a>
-      </div>
+          <a (click)="openFormModal('delete', formacion)" class="btn btn-danger tooltips" data-placement="top"
+            data-toggle="tooltip" data-original-title="Delete">
+            <i class="bi bi-trash"></i></a>
+        </div>
 
-      <div class="row-contenido">
-        <div class="col">
-          <div class="card">
-            <div class="imagen-perfil">
-              <img id="img" src="../../../assets/{{formacion.img}}" alt="imagen institucion">
+        <div class="row-contenido">
+          <div class="col">
+            <div class="card">
+              <div class="imagen-perfil">
+                <img id="img" src="../../../assets/{{formacion.img}}" alt="imagen institucion">
+              </div>
+
+
+              <div class="text-area">
+                <h5 class="card-title"> {{formacion.nombre}} </h5>
+                <p class="card-text"> {{formacion.institucion}} </p>
+                <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
+              </div>
+
+
             </div>
-          
-
-          <div class="text-area">
-            <h5 class="card-title"> {{formacion.nombre}} </h5>
-            <p class="card-text"> {{formacion.institucion}} </p>
-            <p class="card-text"><small class="text-muted"> {{formacion.fecha}} </small></p>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
-  </div>
-  </div>
-  
+
 
 
 
@@ -86,8 +88,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" id="add-formacion-form" class="btn btn-secondary"
-              data-dismiss="modal">Cerrar</button>
+            <button type="button" id="add-formacion-form" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
             <button [disabled]="addForm.invalid" type="submit" id="add-formacion-form" class="btn btn-primary">Guardar
               cambios</button>
           </div>
@@ -140,13 +141,9 @@
           <div class="modal-footer">
             <button type="button" id="1" class="btn btn-secondary" data-dismiss="modal">
               Cerrar</button>
-            <button *ngIf="isloged()"
-            (click)="onUpdateFormacion(editFormacion.id, editForm.value)"
-            data-dismiss="modal"
-            class="btn btn-primary tooltips"
-            data-placement="top"
-            data-toggle="tooltip"
-            data-original-title="Edit">Guardar
+            <button *ngIf="isloged()" (click)="onUpdateFormacion(editFormacion.id, editForm.value)" data-dismiss="modal"
+              class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip"
+              data-original-title="Edit">Guardar
               cambios</button>
           </div>
 
@@ -203,230 +200,11 @@
   </div>
 </div>
 
+<!-- Cancelar drop si no esta logueado
 
-
-
-
-
-
-
-
-
-
-
-<!-- CON INFORMACION A MANO
-
-<div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/logo_fundacion3.png" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Diseñador de experiencia de usuario
-            (UX)</h5>
-          <p class="card-text">Fundación Carlos Slim</p>
-          <p class="card-text"><small class="text-muted">2022</small></p>
-        </div>
-      </div>
-    </div>
+<div *ngIf="!isloged()" class="cdkDropList">
+  <div class="cdk-drag-disabled" >
   </div>
+</div>
 
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/Isologotipo_ISPC_blanco-transparente-300x200.png" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Desarrollo Web y Aplicaciones Digitales</h5>
-          <p class="card-text">Instituto Superior Politécnico de Córdoba</p>
-          <p class="card-text"><small class="text-muted">2022-actualidad</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/BA2016.png" class="img" alt="logo codo a codo">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Diseño UX/UI</h5>
-          <p class="card-text">Agencia de Aprendizaje. Buenos Aires. Codo a Codo
-          </p>
-          <p class="card-text"><small class="text-muted">2022</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/APLogo-20-20.png" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Full Stack</h5>
-          <p class="card-text">Argentina Programa
-          </p>
-          <p class="card-text"><small class="text-muted">2021-actualidad
-          </small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/BA2016.png" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Full Stack
-          </h5>
-          <p class="card-text">Agencia de Aprendizaje. Buenos Aires. Codo a Codo</p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/khan academy.png" class="img" alt="logo khan academy">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Programación de computadoras Unidad: Introducción a HTML/CSS: hacer páginas web
-          </h5>
-          <p class="card-text">Khan Academy</p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/logo_fundacion3.png" class="img" alt="logo Carlos Slim">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Desarrollador Front-end
-          </h5>
-          <p class="card-text">Fundación Carlos Slim</p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/0.jpg" class="img" alt="logo utn mendoza">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Aprendiendo a Programar – Prácticas en JAVASCRIPT
-
-          </h5>
-          <p class="card-text">UTN Universidad Regional de Mendoza</p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
- 
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/google activate.jpg" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Fundamentos de Marketing Digital
-
-
-          </h5>
-          <p class="card-text">Google Activate
-          </p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/google activate.jpg" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Curso de Introducción al Desarrollo Web: HTML
-
-
-          </h5>
-          <p class="card-text">Google Activate
-          </p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/google activate.jpg" class="img" alt="logo google activate">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Curso de Desarrollo de Apps Móviles
-
-
-          </h5>
-          <p class="card-text">Google Activate
-          </p>
-          <p class="card-text"><small class="text-muted">2021</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/sindcato de prensa.jpg" class="img" alt="logo sindicato de prensa rosario">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Postproducción en After Effects
-
-
-          </h5>
-          <p class="card-text">Sindicato de prensa Rosario</p>
-          <p class="card-text"><small class="text-muted">2014</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="card mb-3">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img src="../../../assets/OIP (1).jpg" class="img" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">Diseño integral, especializado en diseño grafico, publicitario, industrial y decoracion.
-
-
-          </h5>
-          <p class="card-text">CEPEC Instituto de diseño
-          </p>
-          <p class="card-text"><small class="text-muted">2009</small></p>
-        </div>
-      </div>
-    </div>
-  </div>
- -->
+-->

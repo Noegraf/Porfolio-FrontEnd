@@ -8,6 +8,12 @@ import { FormacionService } from 'src/app/service/formacion.service';
 import { AuthService } from 'src/app/service/auth.service';
 
 
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
+
 
 @Component({
   selector: 'app-formacion',
@@ -70,7 +76,7 @@ export class FormacionComponent implements OnInit {
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
     if (mode === 'add') {
-      this.addFormacion = formacion;
+      //this.addFormacion = formacion;
       button.setAttribute('data-target', '#addFormacionModal');
     } else if (mode === 'delete') {
       this.deleteFormacion = formacion;
@@ -127,6 +133,30 @@ public onDeleteFormacion(id: number): void {
     },
   });
 
+}
+
+onDrop(event: CdkDragDrop<Formacion[]>) {
+  
+  
+  if (this.authService.loggedIn()) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+        
+
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+
+  }
 }
 
 }
